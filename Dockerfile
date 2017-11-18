@@ -16,7 +16,7 @@ FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get install -y openjdk-7-jre-headless make
 ENV GENDEV /opt/gendev
-COPY --from=builder $GENDEV $GENDEV
+COPY --from=builder /opt/gendev $GENDEV
 ENV PATH $GENDEV/bin:$PATH
 WORKDIR /src
 CMD make -f $GENDEV/sgdk/mkfiles/makefile.gen -C /src clean all
